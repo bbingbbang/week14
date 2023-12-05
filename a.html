@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>happy spin rollet</title>
+<style type="text/css">
+	body{background: black; 
+       background-image: url('0008.gif'); background-size: 400px; background-repeat: repeat; margin:auto;width: 1200px}
+
+
+canvas {
+  transition: 2s;
+}
+
+button {width: 267.001px;
+height: 69.548px;
+	border-radius: 104.722px;
+	border: 2.398px solid #FFFF62;
+	background: #F00;
+	box-shadow: 0px 0px 0px 2.39821px #F00;
+  font-size: 38px;
+  color: #FF0;
+  font-family: Pretendard;
+  font-weight: 700;
+  line-height: 155.523%; /* 59.676px */
+  letter-spacing: 1.727px;
+  transition: .2s;
+  cursor: pointer;
+margin-top: 35px;}
+
+button:active {
+  background: #444;
+  color: #f9f9f9;
+}
+ 
+div {
+	margin: auto;
+  width: 1200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+div::before {
+  content: "";
+  position: absolute;
+ width: 20px;
+height: 65px;
+  border-radius:28px;
+  background: #F00;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 22;
+}
+
+.img {display: block; margin: auto;padding-top: 65px; padding-bottom: 40px}
+.back {display: block;margin-top: -150px;padding-left: 1000px;}
+</style>
+
+</head>
+<body>
+	
+		<img class="img" src="img/t1.png">
+
+		<div>
+  <canvas width="595" height='595'></canvas>  
+  <button onclick="rotate()">Start!</button>
+</div>
+
+<a href="index.html"><img class="back" src="img/back.png"></a>
+
+<script type="text/javascript">
+const $c = document.querySelector("canvas");
+const ctx = $c.getContext(`2d`);
+
+
+const product = [
+  "???", "???", "???", "???", "???", "???", "???", "???"
+];
+
+const colors = ["#FFF", "#FFFF62", "#FFF", "#FFFF62 ", "#FFF", "#FFFF62", "#FFF", "#FFFF62","#FFFF62","#FFFF62"];
+
+const newMake = () => {
+    const [cw, ch] = [$c.width / 2, $c.height / 2];
+    const arc = Math.PI / (product.length / 2);
+  
+    for (let i = 0; i < product.length; i++) {
+      ctx.beginPath();
+      ctx.fillStyle = colors[i % (colors.length -1)];
+      ctx.moveTo(cw, ch);
+      ctx.arc(cw, ch, cw, arc * (i - 1), arc * i);
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    ctx.fillStyle = "#F00";
+    ctx.font = "18px Pretendard";
+    ctx.textAlign = "center";
+
+    for (let i = 0; i < product.length; i++) {
+      const angle = (arc * i) + (arc / 2);
+
+      ctx.save()  ;
+
+      ctx.translate(
+        cw + Math.cos(angle) * (cw - 50),
+        ch + Math.sin(angle) * (ch - 50),
+      );
+
+      ctx.rotate(angle + Math.PI / 2);
+
+      product[i].split(" ").forEach((text, j) => {
+        ctx.fillText(text, 0, 30 * j);
+      });
+
+      ctx.restore();
+    }
+}
+
+const rotate = () => {
+  $c.style.transform = `initial`;
+  $c.style.transition = `initial`;
+  
+  setTimeout(() => {
+    
+    const ran = Math.floor(Math.random() * product.length);
+
+    const arc = 360 / product.length;
+    const rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4);
+    
+    $c.style.transform = `rotate(-${rotate}deg)`;
+    $c.style.transition = `2s`;
+    
+    setTimeout(() => alert(`축하드립니다!! 당첨되었습니다~!! 행복을 찾아가세요!!`), 2000);
+  }, 1);
+};
+
+newMake();
+</script>
+</script>
+</body>
+</html>

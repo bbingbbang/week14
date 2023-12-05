@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Happy! Happy! Happy!</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section>
+	<div class="bg1" id="intro">
+		<div id="starcon" style="position: absolute;"></div>
+		<div style="padding-top:800px;">
+			<div class="marquee" style="margin-bottom: 30px;">
+			    <div class="outer">
+			        <div class="inner">
+			            <span class="content">#도파민  #행운의_순간  #행복한_순간  #야_너두_경험_할수있어  #해피해피해피  #모두행복하세요  #행복롤렛  #행복쿠키  #행복ASMR  </span>
+			            <span class="content">#도파민  #행운의_순간  #행복한_순간  #야_너두_경험_할수있어  #해피해피해피  #모두행복하세요  #행복롤렛  #행복쿠키  #행복ASMR </span>
+			        </div>
+			        <div class="inner">
+			            <span class="content">#도파민  #행운의_순간  #행복한_순간  #야_너두_경험_할수있어  #해피해피해피  #모두행복하세요  #행복롤렛  #행복쿠키  #행복ASMR  </span>
+			            <span class="content">#도파민  #행운의_순간  #행복한_순간  #야_너두_경험_할수있어  #해피해피해피  #모두행복하세요  #행복롤렛  #행복쿠키  #행복ASMR </span>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		
+	</div>
+
+	<div><img src="1.gif"></div>
+</section>
+<section>
+	<div class="bg2">
+		<div style="text-align : center; padding-top: 630px;">
+		<a href="a.html"><img src="button.png"></div></a>
+	</div>
+	<div><img src="2.gif"></div>
+</section>
+
+<section>
+<div class="bg3">
+	<div style="text-align : center; padding-top: 500px;">
+		<a href="b.html"><img src="button.png"></div></a>
+	
+</div>
+	<img src="3.gif">
+</section>
+
+<section>
+<div class="bg4">
+	<div style="text-align : center; padding-top: 620px;">
+		<a href="c.html"><img src="button.png"></div></a>
+</div>
+	
+</section>
+
+<section>
+	<div class="bg5"></div>
+</section>
+<section>
+	<footer>
+		<div>
+			<img class="margin-top1" src="6.png">
+		</div>
+	</footer>
+</section>
+
+<script type="text/javascript">
+setInterval(blink,1000);
+function blink(){
+	
+	starcon.innerHTML = "";
+	
+	let a = ["a.png","b.png","c.png"];
+	for (var i = 0; i < 15; i++) {
+		var t = document.createElement("img");
+		t.src = a[randomBH(0, 2)];
+		t.className = "star";
+		t.style.width = randomBH(60, 80) + "px";
+		t.style.height = "auto";
+		t.style.left = Math.random() * 1200+ "px";
+		t.style.top = Math.random() * 930 + "px";
+		starcon.appendChild(t);
+	}
+}	
+	
+
+	function randomBH(min, max) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+</script>
+</body>
+</html>
